@@ -36,7 +36,7 @@ public class MainViewController implements Initializable {
 	
 	@FXML
 	public void onMenuItemDepartment() {
-		System.out.println("Ok Department");
+		loadView("/gui/DepartmentList.fxml");
 	}
 	
 	@FXML
@@ -50,7 +50,8 @@ public class MainViewController implements Initializable {
 	}
 	
 	//função que abre outra tela
-	private synchronized void loadView(String absoluteName) {
+	private synchronized
+	void loadView(String absoluteName) {
 		try{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
 			VBox newVbox = loader.load();
