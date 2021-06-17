@@ -4,13 +4,14 @@ import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
+	private static Scene mainScene;//atributo da sena
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -21,7 +22,7 @@ public class Main extends Application {
 			scrollPene.setFitToHeight(true);
 			scrollPene.setFitToWidth(true);
 			
-			Scene mainScene = new Scene(scrollPene);//instanciando a sena principal
+			mainScene = new Scene(scrollPene);//instanciando a sena principal
 			primaryStage.setScene(mainScene);
 			primaryStage.setTitle("Sample JavaFX application");//titulo do palco
 			primaryStage.show();//mostra o palco
@@ -30,7 +31,11 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public static Scene getMainScene() {//metodo que passa a referencia da sena
+		return mainScene;
+	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
