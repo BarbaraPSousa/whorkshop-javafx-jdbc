@@ -25,7 +25,8 @@ public class Main extends Application {
 			primaryStage.setScene(mainScene);
 			primaryStage.setTitle("Sample JavaFX application");//titulo do palco
 			primaryStage.show();//mostra o palco
-		} catch (IOException e) {
+		} 
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
