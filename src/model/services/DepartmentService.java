@@ -13,4 +13,13 @@ public class DepartmentService {
 	public List<Department> findAll() {//acessando o banco de dados de dp
 		return dao.findAll();
 	}
+	
+	public void saveOrUpdate(Department obj) {//medodo atualiza ou cadastra novo obj 
+		if(obj.getId() == null) {
+			dao.insert(obj);
+		}
+		else {
+			dao.update(obj);
+		}
+	}
 }

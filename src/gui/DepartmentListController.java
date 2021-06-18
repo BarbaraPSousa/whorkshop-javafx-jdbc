@@ -89,7 +89,9 @@ public class DepartmentListController implements Initializable {
 			//injetando dados vazio para cadastro
 			DepartmentFormController controller = loader.getController();
 			controller.setDepartament(obj);
+			controller.setDepartmentService(new DepartmentService());
 			controller.updateFormData();
+			
 			
 			//injetando dados da nova view
 			Stage dialogStage = new Stage();
