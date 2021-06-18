@@ -7,6 +7,7 @@ import model.entites.Department;
 
 public class DepartmentService {
 	
+	//Operação que retorna a lista de dp Mock
 	public List<Department> findAll() {
 		List<Department> list = new ArrayList<>();
 		list.add(new  Department(1, "Books"));
