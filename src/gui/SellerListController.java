@@ -1,6 +1,7 @@
 package gui;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -42,6 +43,15 @@ public class SellerListController implements Initializable, DataChangeListener {
 	private TableColumn<Seller, String> tableColumnName;
 
 	@FXML
+	private TableColumn<Seller, String> tableColumnEmail;
+	
+	@FXML
+	private TableColumn<Seller, Date> tableColumnBirthDate;
+	
+	@FXML
+	private TableColumn<Seller, Double> tableColumnSalary;
+	
+	@FXML
 	private TableColumn<Seller, Seller> tableColumnEDIT;
 
 	@FXML
@@ -73,7 +83,12 @@ public class SellerListController implements Initializable, DataChangeListener {
 		/* inicia o comportamento das coluna */
 		tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
 		tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
-
+		tableColumnEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+		tableColumnBirthDate.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
+		Utils.formatTableColumnDate(tableColumnBirthDate,"dd/mm/yyyy");
+		tableColumnSalary.setCellValueFactory(new PropertyValueFactory<>("baseSalary"));
+		Utils.formatTableColumnDouble(tableColumnSalary, 2); 	
+		
 		/* Corrigindo a largura e altiura da view */
 		Stage stage = (Stage) Main.getMainScene().getWindow();
 		tableViewSeller.prefHeightProperty().bind(stage.heightProperty());
@@ -83,8 +98,9 @@ public class SellerListController implements Initializable, DataChangeListener {
 		if (service == null) {// teste p/ ter certesa de service não esta null
 			throw new IllegalStateException("Service was null");
 		}
-		List<Seller> list = service.findAll();// recuperando dados DP mock
-		obsList = FXCollections.observableArrayList(list);// carregando list mock
+		List<Seller> list = service.findAll();// recuperando dados 
+		obsList = FXCollections.observableArrayList(list);// carregando list 
+
 		tableViewSeller.setItems(obsList);// carregando os dados e mostrando na tela
 		initEditButtons(); // edit
 		initRemoveButtons();//remove
