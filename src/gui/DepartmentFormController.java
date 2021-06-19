@@ -135,6 +135,7 @@ public class DepartmentFormController implements Initializable{
 	
 	//tratamento do campo erro 
 	private void setErrorMassages(Map<String, String> errors) {
+		
 		Set<String> fields = errors.keySet();
 		
 		if(fields.contains("name")) {
