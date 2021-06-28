@@ -64,7 +64,7 @@ public class DepartmentListController implements Initializable, DataChangeListen
 		createDialogForm(obj, "/gui/DepartmentForm.fxml", parentStage);
 	}
 
-	public void setDepartmentService(DepartmentService service) {
+	public void setDepartmentService(DepartmentService service) {//Injetando depedencias
 		this.service = service;
 	}
 
@@ -88,8 +88,8 @@ public class DepartmentListController implements Initializable, DataChangeListen
 		if (service == null) {// teste p/ ter certesa de service não esta null
 			throw new IllegalStateException("Service was null");
 		}
-		List<Department> list = service.findAll();// recuperando dados DP mock
-		obsList = FXCollections.observableArrayList(list);// carregando list mock
+		List<Department> list = service.findAll();// recuperando dados Dp
+		obsList = FXCollections.observableArrayList(list);// carregando list
 		tableViewDepartment.setItems(obsList);// carregando os dados e mostrando na tela
 		initEditButtons(); // edit
 		initRemoveButtons();//remove

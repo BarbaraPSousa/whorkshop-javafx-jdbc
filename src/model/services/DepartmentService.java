@@ -23,7 +23,7 @@ public class DepartmentService {
 		}
 	}
 	
-	public void remove(Department obj) {//remove um dp do banco de dados
+	public void remove(Department obj) {//remove um DP do banco de dados
 		dao.deleteById(obj.getId());
 	}
 }
