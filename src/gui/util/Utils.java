@@ -28,6 +28,14 @@ public class Utils {
 			return null;
 		}
 	}
+	
+	public static Double tryParseToDouble(String str) {// retorna o str para converter para double
+		try {
+			return Double.parseDouble(str);
+		} catch (NumberFormatException e) {// retornando null na exceçao
+			return null;
+		}
+	}
 
 	// formatação de Date
 	public static <T> void formatTableColumnDate(TableColumn<T, Date> tableColumn, String format) {
