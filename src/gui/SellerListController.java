@@ -31,6 +31,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.entities.Seller;
+import model.services.DepartmentService;
 import model.services.SellerService;
 
 public class SellerListController implements Initializable, DataChangeListener {
@@ -119,8 +120,9 @@ public class SellerListController implements Initializable, DataChangeListener {
 
 			// injetando dados vazio para cadastro
 			SellerFormController controller = loader.getController();
-			controller.setDepartament(obj);
-			controller.setSellerService(new SellerService());
+			controller.setSeller(obj);
+			controller.setSellerServices(new SellerService(), new DepartmentService());
+			controller.loadAssociatedObjects();//carrega os dp do banco de dados deixa no controller
 			controller.subscribeDataChangeListener(this);// subescrevendo na tabela
 			controller.updateFormData();
 
@@ -133,6 +135,7 @@ public class SellerListController implements Initializable, DataChangeListener {
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.show();
 		} catch (IOException e) {
+			e.printStackTrace();
 			Alerts.showAlert("IO Exception", "Erro loanding view", e.getMessage(), AlertType.ERROR);
 		}
 	}
